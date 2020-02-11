@@ -1,0 +1,24 @@
+Changes to invoke.js:
+	Added the feature of passing funciton arguments from the command line using 
+	the format: 
+	
+	node invoke.js <function> <function param 1> ... <function param n>
+
+	Arguments from argv were packed into an array and that array is passed to 
+	contract.submitTransaction().
+
+	This alows for all functions to be called form the terminal without having to 
+	edit invoke.js to use a different function than was used previously.
+
+Cahnges to query.js;
+	Added the feature of passing funciton arguments from the command line using 
+	the format:
+
+	node query.js <optional car ID num>
+
+	If the car ID field is left blank, contract.evaluateTransaction('queryAllCars')
+	is executed.
+	If a car ID is passed (decimal number), it is concatenated with "CAR" to create
+	a valid world state query key; passing a decimal number executes 
+	contract.evaluateTransaction('queryCar', 'CAR#') 
+	where # is the terminal arguemnt passed.
